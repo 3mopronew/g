@@ -6,7 +6,7 @@ module.exports = function ({ Client, RichPresence, joinVoiceChannel, config }) {
 
 const client = new Client({ checkUpdate: false })
 
-client.login(process.env.).catch(() => console.error("❌ ㆍ TOKEN", __filename))
+client.login(process.env.HEMA2).catch(() => console.log("❌ ㆍ TOKEN", __filename))
 
 //══════[ Code ]══════
 
@@ -27,14 +27,14 @@ client.on("ready", () => {
 setInterval(() => {
 try {
 const channel = client.channels.cache.get("1230520452301197478")
-if (!channel) console.error("❌ ㆍ Voice Channel", __filename)
-const VoiceConnection = joinVoiceChannel({
+if (!channel) console.log("❌ ㆍ Voice Channel", __filename)
+joinVoiceChannel({
 channelId: channel.id,
 guildId: "1230520451852140544",
 selfMute: true,
 selfDeaf: false,
 adapterCreator: channel.guild.voiceAdapterCreator })
 } catch (error) {
-console.error("❌ ㆍ No Voice Permission", __filename)}}, config.time )})
+console.log("❌ ㆍ No Voice Permission", __filename)}}, config.time )})
 
 }

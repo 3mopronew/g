@@ -30,12 +30,12 @@ client.user.setStatus("idle")
 setInterval(() => {
 try {
 const channel = client.channels.cache.get(config.channel)
-if (!channel) console.error("❌ ㆍ Text Channel", __filename)
+if (!channel) console.log("❌ ㆍ Text Channel", __filename)
 channel.send(config.message)
 } catch (error) {
-console.error("❌ ㆍ No Text Permission", __filename)}}, config.time )})
+console.log("❌ ㆍ No Text Permission", __filename)}}, config.time )})
 
-client.login(token).catch(() => console.error(`❌ ㆍ ${token}`, __filename))}
+client.login(token).catch(() => console.log(`❌ ㆍ ${token}`, __filename))}
 
 tokens.forEach(token => createBot(token))
 

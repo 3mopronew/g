@@ -59,27 +59,13 @@ try {
 await axios.post(webhookURL, { content: message })
 } catch (error) { return; }}
 
-const originalLog = console.log
-const originalWarn = console.warn
-const originalError = console.error
-
 console.log = function (...args) {
-originalLog(...args)
+console.info(...args)
 const message = args.join(" ")
 sendToDiscord(`**\`\`\`
 ${message}
 \`\`\`**`)}
 
-console.warn = function (...args) {
-originalWarn(...args)
-const message = args.join(" ")
-sendToDiscord(`**\`\`\`
-${message}
-\`\`\`**`)}
+console.warn = console.log
 
-console.error = function (...args) {
-originalError(...args)
-const message = args.join(" ")
-sendToDiscord(`**\`\`\`
-${message}
-\`\`\`**`)}
+console.error = console.log
